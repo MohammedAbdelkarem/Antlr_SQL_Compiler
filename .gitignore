@@ -24,3 +24,7 @@ antlr-*-complete.jar
 sql_tree.png
 sql_lexer_py-output.md
 sql_lexer_py-output.txt
+
+# Database files
+*.db
+*.sql
