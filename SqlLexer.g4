@@ -1,0 +1,151 @@
+lexer grammar SqlLexer;
+
+options {
+  caseInsensitive = true;
+}
+
+
+
+WS: [ \t\r\n]+ -> skip;
+BLOCK_COMMENT: '/*' .*? '*/' -> skip;
+LINE_COMMENT: '--' ~[\r\n]* -> skip;
+
+
+STRING
+    : '\'' ( '\\' .
+           | '\'\''        
+           | ~['\\\r\n]
+           | '\r'
+           | '\n'
+           )* '\''
+    ;
+
+UNSIGNED_FLOAT_SIMPLE: [0-9]+ '.' [0-9]+;
+UNSIGNED_FLOAT: ([0-9]+ ('.' [0-9]*)? | '.' [0-9]+) [E] [+\-]? [0-9]+;
+UNSIGNED_INTEGER: [0-9]+;
+
+
+
+NOT_EQUAL: '<>' | '!=';
+LTE: '<=';
+GTE: '>=';
+CONCAT: '||';
+EQ: '=';
+LT: '<';
+GT: '>';
+PLUS: '+';
+MINUS: '-';
+STAR: '*';
+SLASH: '/';
+LPAREN: '(';
+RPAREN: ')';
+COMMA: ',';
+SEMI: ';';
+DOT: '.';
+
+
+BRACKET_ID
+    : '[' (~[\]\r\n])+ ']'
+    ;
+
+
+
+ADD: 'ADD';
+ALTER: 'ALTER';
+ALL: 'ALL';
+AND: 'AND';
+AS: 'AS';
+ASC: 'ASC';
+AVG: 'AVG';
+BEGIN: 'BEGIN';
+BETWEEN: 'BETWEEN';
+BY: 'BY';
+CASE: 'CASE';
+CLUSTERED: 'CLUSTERED';
+NONCLUSTERED: 'NONCLUSTERED';
+CASCADE: 'CASCADE';
+CHECK: 'CHECK';
+CLOSE: 'CLOSE';
+COLUMN: 'COLUMN';
+CONCAT_KW: 'CONCAT';
+CONSTRAINT: 'CONSTRAINT';
+CREATE: 'CREATE';
+CROSS: 'CROSS';
+CURSOR: 'CURSOR';
+DATABASE: 'DATABASE';
+DECLARE: 'DECLARE';
+DEFAULT: 'DEFAULT';
+DEALLOCATE: 'DEALLOCATE';
+DELETE: 'DELETE';
+DESC: 'DESC';
+DISTINCT: 'DISTINCT';
+DROP: 'DROP';
+ELSE: 'ELSE';
+END: 'END';
+EXCEPT: 'EXCEPT';
+EXISTS: 'EXISTS';
+FETCH: 'FETCH';
+FOREIGN: 'FOREIGN';
+FOR: 'FOR';
+FROM: 'FROM';
+FULL: 'FULL';
+GO: 'GO';
+GROUP: 'GROUP';
+HAVING: 'HAVING';
+IDENTITY: 'IDENTITY';
+IF: 'IF';
+IN: 'IN';
+INDEX: 'INDEX';
+INNER: 'INNER';
+INSERT: 'INSERT';
+INT: 'INT';
+INTERSECT: 'INTERSECT';
+INTO: 'INTO';
+IS: 'IS';
+JOIN: 'JOIN';
+KEY: 'KEY';
+LEFT: 'LEFT';
+LIKE: 'LIKE';
+MAX: 'MAX';
+MIN: 'MIN';
+NATURAL: 'NATURAL';
+NEXT: 'NEXT';
+NO: 'NO';
+NOT: 'NOT';
+NULL: 'NULL';
+OF: 'OF';
+OFFSET: 'OFFSET';
+ON: 'ON';
+ONLY: 'ONLY';
+OPEN: 'OPEN';
+OR: 'OR';
+ORDER: 'ORDER';
+OUTER: 'OUTER';
+PERCENT: 'PERCENT';
+PRIMARY: 'PRIMARY';
+REFERENCES: 'REFERENCES';
+RENAME: 'RENAME';
+RIGHT: 'RIGHT';
+ROWS: 'ROWS';
+SELECT: 'SELECT';
+SET: 'SET';
+TABLE: 'TABLE';
+THEN: 'THEN';
+TO: 'TO';
+TOP: 'TOP';
+TRUNCATE: 'TRUNCATE';
+UNION: 'UNION';
+UNIQUE: 'UNIQUE';
+UPDATE: 'UPDATE';
+USE: 'USE';
+VALUES: 'VALUES';
+VIEW: 'VIEW';
+WHERE: 'WHERE';
+WHEN: 'WHEN';
+WITH: 'WITH';
+
+
+IDENTIFIER: [A-Z_] [A-Z_0-9]*;
+
+
+ERROR_CHAR: .;

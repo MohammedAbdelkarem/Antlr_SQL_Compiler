@@ -1,0 +1,26 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Editor and test-tool metadata
+.vscode/
+.idea/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ANTLR local cache and generated artifacts
+.antlr/
+*.interp
+*.tokens
+antlr-*-complete.jar
+
+# Generated test output
+sql_tree.png
+sql_lexer_py-output.md
+sql_lexer_py-output.txt
